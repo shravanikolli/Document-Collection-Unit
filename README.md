@@ -1,6 +1,6 @@
 # Document Collection Unit
 
-This project is a POC that i worked on my own to become more fluent in Angular JS. Just to give a complete picture, the application contains few application tabs as below<br>
+This project is a POC on document delivery system, that i worked on to become more fluent in Angular JS. <br/>The application contains few functionalities described as below<br>
 
 1) Projects<br/>
 2) Supplier Contracts <br/>
@@ -12,6 +12,3 @@ Each project will have set of contracts and these contracts will have different 
 
 In Supplier Exchange package -> partials : logic for above mentioned components are defined.<br/>
 In Supplier Exchange package -> js : has layout and form validations for the defined UI components.
-
-
-
