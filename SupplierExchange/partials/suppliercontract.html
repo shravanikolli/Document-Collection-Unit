@@ -1,0 +1,38 @@
+<div class="container">
+	<ol class="breadcrumb">
+		<li>
+			<a href="#/"><i class="glyphicon glyphicon-home"></i></a>
+		</li>
+		<li>
+			<a href="#/"><i class="glyphicon glyphicon-th"></i>&nbsp;&nbsp;{{capitalProject.name}}</a>
+		</li>
+	</ol>
+	<div class="row">
+		<div class="col-lg-12">
+			<div class="panel-title">
+				<h2><span class="glyphicon glyphicon-th-large"></span>&nbsp;&nbsp;Supplier Contract</h2>
+			</div>
+		</div>
+	</div>
+	<form role="form">
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="form-group">
+					<label for="name">Name</label>
+					<input ng-model="supplierContractName" type="text" class="form-control" id="name" placeholder="Enter name">
+				</div>
+				<div class="form-group">
+					<label for="decription">Decription</label>
+					<textarea ng-model="supplierContractDescription" rows="5" class="form-control" id="decription" placeholder="Enter decription"></textarea>
+				</div>
+				<button ng-click="cancel()"class="btn">
+					Cancel
+				</button>
+				<button ng-click="createSupplierContract()" type="submit" class="btn btn-default">
+					Save
+				</button>
+			</div>
+		</div>
+	</form>
+</div>
+

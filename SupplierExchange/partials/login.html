@@ -1,0 +1,22 @@
+<div class="container">
+	<ol class="breadcrumb">
+	  <li>&nbsp;</li>
+	</ol>
+	<div class="panel-title">
+		<h2><span class="glyphicon glyphicon-log-in"></span>&nbsp;&nbsp;Log in</h2>
+	</div>
+	<br/>
+	<form role="form">
+		<div class="form-group">
+			<label for="exampleInputEmail1">Email address</label>
+			<input ng-model="loginUser.email" type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email" required="required" style="width: 40em;">
+		</div>
+		<div class="form-group">
+			<label for="exampleInputPassword1">Password</label>
+			<input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" required="required" style="width: 40em;">
+		</div>
+		<button ng-click="login()" type="submit" class="btn btn-default">
+			Login
+		</button>
+	</form>
+</div>

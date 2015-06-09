@@ -1,0 +1,37 @@
+<div class="container">
+	<div class="form-group">
+		<span class="glyphicon glyphicon-th"></span></span>&nbsp;&nbsp;<label>Capital Project: </label>&nbsp;&nbsp;{{capitalProject.name}}
+	</div>
+	<form class="form-inline" role="form">
+		<div class="form-group">
+			<input class="form-control" type="email" ng-model="email" id="email" required="required" placeholder="Enter email address" style="width: 40em;"/>
+			<button class="btn btn-primary" ng-click="addCapitalProjectCoordinator()">ADD</button>
+		</div>
+	</form>
+	<br/>
+	<div>
+		<table class="table">
+			<tr>
+				<th>
+					Name
+				</th>
+				<th>
+					Email
+				</th>
+				<th>
+					Status
+				</th>
+				<th>
+					&nbsp;
+				</th>
+			</tr>
+			<tr ng-repeat="coordinator in capitalProject.coordinators">
+				<td>{{coordinator.name || coordinator.email }}</td>
+				<td>{{coordinator.email}}</td>
+				<td>{{coordinator.status}}&nbsp;&nbsp;<button ng-show="isInvitatonPending(coordinator.status)" class="btn btn-xs">RESEND</button></td>
+				<td><button ng-click="deleteCapitalProjectCoordinator($index)" class="btn btn-xs"><i class="glyphicon glyphicon-minus-sign"></i></button></td>
+			</tr>
+		</table>
+	</div>
+</div>
+

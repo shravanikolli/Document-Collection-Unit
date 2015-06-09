@@ -1,0 +1,105 @@
+<div class="container">
+	<ol class="breadcrumb">
+		<li>
+			<a href="#/"><i class="glyphicon glyphicon-home"></i></a>
+		</li>
+		<li>
+			<a href="#/"><i class="glyphicon glyphicon-th"></i>&nbsp;&nbsp;{{capitalProject.name}}</a>
+		</li>
+		<li>
+			<a href="#/editsuppliercontract/{{capitalProjectIndex}}/{{supplierContractIndex}}"><i class="glyphicon glyphicon-th-large"></i>&nbsp;&nbsp;{{supplierContract.name}}</a>
+		</li>
+	</ol>
+	<div class="row">
+		<div class="col-lg-7">
+			<div class="panel-title">
+				<h2><span class="glyphicon glyphicon-tag"></span>&nbsp;&nbsp;Deliverables</h2>
+			</div>
+		</div>
+		<div class="col-lg-5">
+			<div class="panel-body">
+				<ul class="nav nav-pills pull-right nav-btn">
+					<li>
+						<a href="#/createdeliverable/{{capitalProjectIndex}}/{{supplierContractIndex}}"><i class="glyphicon glyphicon-plus-sign"></i>&nbsp;<i class="glyphicon glyphicon-tag"></i>&nbsp;NEW DELIVERABLE</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-lg-7">
+			&nbsp;
+		</div>
+		<div class="col-lg-5">
+			<div class="panel-title">
+				<h4>Notifications <span class="badge pull-right">0</span></h4>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-lg-7">
+			<div ng-repeat="deliverable in supplierContract.deliverables" class="panel-body">
+				<div class="panel panel-default">
+					<ul class="nav nav-pills pull-right">
+						<li>
+							<a href="#/createdeliverableitem/{{capitalProjectIndex}}/{{supplierContractIndex}}/{{$index}}" title="New Deliverable Item"><i class="glyphicon glyphicon-tags"></i></a>
+						</li>
+						<li>
+							<a href="#/editdeliverable/{{capitalProjectIndex}}/{{supplierContractIndex}}/{{$index}}" title="Edit Deliverable"><i class="glyphicon glyphicon-pencil"></i></a>
+						</li>
+						<li>
+							<button ng-click="deleteDeliverable($index)" class="btn btn-link" title="Delete Deliverable">
+								<i class="glyphicon glyphicon-remove-sign"></i>
+							</button>
+						</li>
+					</ul>
+					<div class="panel-body">
+						<div class="panel-title">
+							<button ng-click="toggleExpansionState($index)" class="btn btn-sm btn-link"><span ng-class="{'glyphicon':true, 'glyphicon-chevron-down': isExpanded($index), 'glyphicon-chevron-right': !isExpanded($index)}"></span></button>&nbsp;&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-tag"></span>&nbsp;&nbsp;{{deliverable.name}}
+						</div>
+					</div>
+					<div class="panel-body">
+						<div>
+							{{deliverable.description}}
+						</div>
+					</div>
+					<ul ng-show="supplierContract.deliverables.length == 0" class="nav nav-pills pull-right nav-btn">
+						<li>
+							<a href="#/createdeliverableitem/{{$index}}">ADD A SUPPLIER CONTRACT</a>
+						</li>
+					</ul>
+					<div ng-show="isExpanded($index)" class="col-sm-offset-1">
+						<div ng-repeat="deliverableItem in deliverable.deliverableItems">
+							<ul class="nav nav-pills pull-right">
+								<li>
+									<a href="#/editdeliverableitem/{{capitalProjectIndex}}/{{supplierContractIndex}}/{{$parent.$index}}/{{$index}}" title="Edit Deliverable Item"><i class="glyphicon glyphicon-pencil"></i></a>
+								</li>
+								<li>
+									<button ng-click="deleteDeliverableItem($parent.$index, $index)" class="btn btn-link" title="Delete Deliverable Item">
+										<i class="glyphicon glyphicon-remove-sign"></i>
+									</button>
+								</li>
+							</ul>
+							<div class="panel-body">
+								<div class="panel-title">
+									<span class="glyphicon glyphicon-tags"></span>&nbsp;&nbsp;{{deliverableItem.name}}
+								</div>
+							</div>
+							<div class="panel-body">
+								<div>
+									{{deliverableItem.description}}
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-lg-5">
+			<div class="panel-title">
+				&nbsp;
+			</div>
+		</div>
+	</div>
+</div>
+

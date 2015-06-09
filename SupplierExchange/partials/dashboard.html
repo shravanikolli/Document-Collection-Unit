@@ -1,0 +1,98 @@
+<div class="container">
+	<ol class="breadcrumb">
+	  <li><i class="glyphicon glyphicon-home"></i></li>
+	</ol>
+	<div class="row">
+		<div class="col-lg-7">
+			<div class="panel-title">
+				<h2><span class="glyphicon glyphicon-th"></span>&nbsp;&nbsp;Capital Projects</h2>
+			</div>
+		</div>
+		<div class="col-lg-5">
+			<div class="panel-body">
+				<ul class="nav nav-pills pull-right nav-btn">
+					<li>
+						<a href="#/createcapitalproject"><i class="glyphicon glyphicon-plus-sign"></i>&nbsp;<i class="glyphicon glyphicon-th"></i>&nbsp;NEW CAPITAL PROJECT</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-lg-7">
+			&nbsp;		
+		</div>
+		<div class="col-lg-5">
+			<div class="panel-title">
+				<h4>Notifications <span class="badge pull-right">0</span></h4>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-lg-7">
+			<div ng-repeat="capitalProject in application.capitalProjects" class="panel-body">
+				<div class="panel panel-default">
+					<ul class="nav nav-pills pull-right">
+						<li>
+							<a href="#/createsuppliercontract/{{$index}}" title="New Supplier Contract"><i class="glyphicon glyphicon-th-large"></i></a>
+						</li>
+						<li>
+							<a href="#/manageCapitalProjectCoordinators/{{$index}}" title="Manage Capital Project Members"><i class="glyphicon glyphicon-user"></i></a>
+						</li>
+						<li>
+							<a href="#/editcapitalproject/{{$index}}" title="Edit Capital Project"><i class="glyphicon glyphicon-pencil"></i></a>
+						</li>
+						<li>
+							<a href="#" ng-click="deleteCapitalProject($index)" title="Delete Capital Project"><i class="glyphicon glyphicon-remove-sign"></i></a>
+						</li>
+					</ul>
+					<div class="panel-body">
+						<div class="panel-title">
+							<button ng-click="toggleExpansionState($index)" class="btn btn-sm btn-link"><span ng-class="{'glyphicon':true, 'glyphicon-chevron-down': isExpanded($index), 'glyphicon-chevron-right': !isExpanded($index)}"></span></button>&nbsp;&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-th"></span> {{capitalProject.name}}
+						</div>
+					</div>
+					<div class="panel-body">
+						<div>
+							{{capitalProject.description}}
+						</div>
+					</div>
+					<ul ng-show="capitalProject.supplierContracts.length == 0" class="nav nav-pills pull-right nav-btn">
+						<li>
+							<a href="#/createsuppliercontract/{{$index}}">ADD A SUPPLIER CONTRACT</a>
+						</li>
+					</ul>
+					<div ng-show="isExpanded($index)" class="col-sm-offset-1">
+						<div ng-repeat="supplierContract in capitalProject.supplierContracts">
+							<ul class="nav nav-pills pull-right">
+								<li>
+									<a href="#/viewsuppliercontract/{{$parent.$index}}/{{$index}}" title="View Supplier Contract"><i class="glyphicon glyphicon-eye-open"></i></a>
+								</li>
+								<li>
+									<a href="#/editsuppliercontract/{{$parent.$index}}/{{$index}}" title="Edit Supplier Contract"><i class="glyphicon glyphicon-pencil"></i></a>
+								</li>
+								<li>
+									<a href="#" ng-click="deleteSupplierContract($parent.$index, $index)" title="Delete Supllier Contract"><i class="glyphicon glyphicon-remove-sign"></i></a>
+								</li>
+							</ul>
+							<div class="panel-body">
+								<div class="panel-title">
+									<span class="glyphicon glyphicon-th-large"></span> {{supplierContract.name}}
+								</div>
+							</div>
+							<div class="panel-body">
+								<div>
+									{{supplierContract.description}}
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-lg-5">
+			<div class="panel-title">
+				&nbsp;
+			</div>
+		</div>
+	</div>
+</div>
